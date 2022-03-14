@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+import "hardhat/console.sol";
+
 contract Token {
     string public name = "My Hardhat token";
     string public symbol = "MHT";
@@ -19,6 +21,7 @@ contract Token {
     }
 
     function transfer(address to, uint256 amount) external {
+        console.log(msg.sender, to, amount);
         require(balances[msg.sender] >= amount, "Not enough tokens");
         balances[msg.sender] -= amount;
         balances[to] += amount;
